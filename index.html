@@ -4,27 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mp Isomi School administration dashboard for students, teachers, classes and school fees.">
     <title>Mp Isomi School | Admin Dashboard</title>
 </head>
 
-<body class="min-h-screen bg-slate-100 text-slate-800">
+<body class="min-h-screen bg-slate-100 font-sans text-slate-800">
 
     <div class="min-h-screen lg:flex">
 
+        <!-- Mobile overlay -->
+        <button id="sidebar-overlay" type="button" aria-label="Close navigation menu" class="fixed inset-0 z-30 hidden bg-slate-950/50 lg:hidden"></button>
+
         <!-- Sidebar -->
-        <aside class="hidden w-64 shrink-0 bg-slate-900 text-white lg:flex lg:flex-col">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-64 -translate-x-full flex-col bg-slate-900 text-white transition-transform duration-300 lg:static lg:z-auto lg:translate-x-0">
+
             <div class="border-b border-slate-700 p-6">
                 <h1 class="text-xl font-bold">Mp Isomi School</h1>
                 <p class="mt-1 text-sm text-slate-400">School Management</p>
             </div>
 
             <nav class="flex-1 space-y-2 p-4" aria-label="Main navigation">
-                <a href="#" class="block rounded-lg bg-blue-600 px-4 py-3 font-medium text-white transition hover:bg-blue-500">▦ Dashboard</a>
-                <a href="#" class="block rounded-lg px-4 py-3 text-slate-300 transition hover:bg-slate-800 hover:text-white">♙ Students</a>
-                <a href="#" class="block rounded-lg px-4 py-3 text-slate-300 transition hover:bg-slate-800 hover:text-white">♧ Teachers</a>
-                <a href="#" class="block rounded-lg px-4 py-3 text-slate-300 transition hover:bg-slate-800 hover:text-white">▤ Classes</a>
-                <a href="#" class="block rounded-lg px-4 py-3 text-slate-300 transition hover:bg-slate-800 hover:text-white">✓ Attendance</a>
-                <a href="#" class="block rounded-lg px-4 py-3 text-slate-300 transition hover:bg-slate-800 hover:text-white">₣ Payments</a>
+                <a href="#dashboard" class="nav-link bg-blue-600 text-white">▦ Dashboard</a>
+                <a href="#students" class="nav-link">♙ Students</a>
+                <a href="#activity" class="nav-link">◷ Recent Activity</a>
+                <a href="#classes" class="nav-link">▤ Classes</a>
+                <a href="#attendance" class="nav-link">✓ Attendance</a>
+                <a href="#payments" class="nav-link">₣ Payments</a>
             </nav>
 
             <div class="border-t border-slate-700 p-4 text-sm text-slate-400">
@@ -33,47 +38,51 @@
         </aside>
 
         <!-- Main content -->
-        <main class="min-w-0 flex-1">
+        <main id="dashboard" class="min-w-0 flex-1">
 
             <!-- Top bar -->
             <header class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 bg-white px-4 py-4 sm:px-6 lg:px-8">
-                <div>
-                    <p class="text-sm text-slate-500">Mp Isomi School</p>
-                    <h2 class="text-2xl font-bold text-slate-900">Dashboard</h2>
+
+                <div class="flex items-center gap-3">
+                    <button id="mobile-menu-button" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation menu" class="rounded-lg border border-slate-300 px-3 py-2 text-xl transition hover:bg-slate-100 lg:hidden">
+            ☰
+          </button>
+
+                    <div>
+                        <p class="text-sm text-slate-500">Mp Isomi School</p>
+                        <h2 class="text-2xl font-bold text-slate-900">Dashboard</h2>
+                    </div>
                 </div>
 
                 <div class="flex items-center gap-3">
-                    <label for="dashboard-search" class="sr-only">Search dashboard</label>
-                    <input id="dashboard-search" type="search" placeholder="Search..." class="w-32 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 sm:w-56">
+                    <label for="dashboard-search" class="sr-only">Search students</label>
+                    <input id="dashboard-search" type="search" placeholder="Search students..." class="w-36 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 sm:w-56">
 
-                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-700" role="img" aria-label="Administrator avatar">
-                        A
-                    </div>
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-700" role="img" aria-label="Administrator avatar">A</div>
                 </div>
             </header>
 
-
-            <!-- Dashboard content -->
             <section class="space-y-6 p-4 sm:p-6 lg:p-8">
 
+                <!-- Welcome -->
                 <div>
                     <h3 class="text-xl font-bold text-slate-900">Welcome back, Administrator!</h3>
                     <p class="mt-1 text-sm text-slate-500">Here is what is happening at your school today.</p>
                 </div>
 
-                <!-- Statistics cards -->
+                <!-- Statistics -->
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
 
-                    <article class="rounded-xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+                    <article class="dashboard-card">
                         <div class="flex items-center justify-between">
                             <p class="text-sm font-medium text-slate-500">Total Students</p>
                             <span class="rounded-lg bg-blue-100 px-3 py-2 text-blue-700">♙</span>
                         </div>
-                        <h4 class="mt-4 text-3xl font-bold text-slate-900">1,240</h4>
+                        <h4 id="student-count" class="mt-4 text-3xl font-bold text-slate-900">1,240</h4>
                         <p class="mt-2 text-sm text-green-600">↑ 12% <span class="text-slate-500">from last month</span></p>
                     </article>
 
-                    <article class="rounded-xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+                    <article class="dashboard-card">
                         <div class="flex items-center justify-between">
                             <p class="text-sm font-medium text-slate-500">Total Teachers</p>
                             <span class="rounded-lg bg-purple-100 px-3 py-2 text-purple-700">♧</span>
@@ -82,7 +91,7 @@
                         <p class="mt-2 text-sm text-green-600">↑ 4% <span class="text-slate-500">from last month</span></p>
                     </article>
 
-                    <article class="rounded-xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+                    <article class="dashboard-card">
                         <div class="flex items-center justify-between">
                             <p class="text-sm font-medium text-slate-500">Total Classes</p>
                             <span class="rounded-lg bg-amber-100 px-3 py-2 text-amber-700">▤</span>
@@ -91,7 +100,7 @@
                         <p class="mt-2 text-sm text-green-600">↑ 2 new <span class="text-slate-500">this term</span></p>
                     </article>
 
-                    <article class="rounded-xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+                    <article class="dashboard-card" id="attendance">
                         <div class="flex items-center justify-between">
                             <p class="text-sm font-medium text-slate-500">Attendance Rate</p>
                             <span class="rounded-lg bg-green-100 px-3 py-2 text-green-700">✓</span>
@@ -102,23 +111,20 @@
 
                 </div>
 
-
-
-                <!-- Students Table -->
-                <div class="overflow-hidden rounded-xl bg-white shadow-sm">
+                <!-- Students table -->
+                <section id="students" class="section-card">
                     <div class="flex flex-wrap items-center justify-between gap-3 p-5">
                         <div>
                             <h3 class="text-lg font-bold text-slate-900">Recent Students</h3>
                             <p class="mt-1 text-sm text-slate-500">Latest student fee records</p>
                         </div>
-
-                        <button type="button" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-      + View All
-    </button>
+                        <a href="#add-student" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+              + Add Student
+            </a>
                     </div>
 
                     <div class="overflow-x-auto">
-                        <table class="w-full min-w-[700px] text-left text-sm">
+                        <table class="w-full min-w-[650px] text-left text-sm">
                             <thead class="bg-slate-50 text-xs uppercase text-slate-500">
                                 <tr>
                                     <th scope="col" class="px-5 py-3">Student</th>
@@ -128,246 +134,176 @@
                                 </tr>
                             </thead>
 
-                            <tbody class="divide-y divide-slate-100">
-                                <tr class="transition hover:bg-slate-50">
+                            <tbody id="student-table-body" class="divide-y divide-slate-100">
+                                <tr class="student-row">
                                     <td class="px-5 py-4 font-medium text-slate-900">Aline Uwase</td>
                                     <td class="px-5 py-4 text-slate-600">Senior 6</td>
                                     <td class="px-5 py-4">450,000 RWF</td>
-                                    <td class="px-5 py-4">
-                                        <span class="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">Paid</span>
-                                    </td>
+                                    <td class="px-5 py-4"><span class="status-badge bg-green-100 text-green-700">Paid</span></td>
                                 </tr>
-
-                                <tr class="transition hover:bg-slate-50">
+                                <tr class="student-row">
                                     <td class="px-5 py-4 font-medium text-slate-900">Eric Niyonzima</td>
                                     <td class="px-5 py-4 text-slate-600">Senior 5</td>
                                     <td class="px-5 py-4">300,000 RWF</td>
-                                    <td class="px-5 py-4">
-                                        <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">Pending</span>
-                                    </td>
+                                    <td class="px-5 py-4"><span class="status-badge bg-amber-100 text-amber-700">Pending</span></td>
                                 </tr>
-
-                                <tr class="transition hover:bg-slate-50">
+                                <tr class="student-row">
                                     <td class="px-5 py-4 font-medium text-slate-900">Diane Mukamana</td>
                                     <td class="px-5 py-4 text-slate-600">Senior 4</td>
                                     <td class="px-5 py-4">0 RWF</td>
-                                    <td class="px-5 py-4">
-                                        <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700">Failed</span>
-                                    </td>
+                                    <td class="px-5 py-4"><span class="status-badge bg-red-100 text-red-700">Failed</span></td>
                                 </tr>
-
-                                <tr class="transition hover:bg-slate-50">
+                                <tr class="student-row">
                                     <td class="px-5 py-4 font-medium text-slate-900">Patrick Habimana</td>
                                     <td class="px-5 py-4 text-slate-600">Senior 3</td>
                                     <td class="px-5 py-4">450,000 RWF</td>
-                                    <td class="px-5 py-4">
-                                        <span class="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">Paid</span>
-                                    </td>
+                                    <td class="px-5 py-4"><span class="status-badge bg-green-100 text-green-700">Paid</span></td>
                                 </tr>
-
-                                <tr class="transition hover:bg-slate-50">
+                                <tr class="student-row">
                                     <td class="px-5 py-4 font-medium text-slate-900">Grace Ingabire</td>
                                     <td class="px-5 py-4 text-slate-600">Senior 2</td>
                                     <td class="px-5 py-4">200,000 RWF</td>
-                                    <td class="px-5 py-4">
-                                        <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">Pending</span>
-                                    </td>
+                                    <td class="px-5 py-4"><span class="status-badge bg-amber-100 text-amber-700">Pending</span></td>
                                 </tr>
-
-                                <tr class="transition hover:bg-slate-50">
+                                <tr class="student-row">
                                     <td class="px-5 py-4 font-medium text-slate-900">Samuel Mugisha</td>
                                     <td class="px-5 py-4 text-slate-600">Senior 1</td>
                                     <td class="px-5 py-4">450,000 RWF</td>
-                                    <td class="px-5 py-4">
-                                        <span class="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">Paid</span>
-                                    </td>
+                                    <td class="px-5 py-4"><span class="status-badge bg-green-100 text-green-700">Paid</span></td>
                                 </tr>
                             </tbody>
                         </table>
-
-
-
-                        <!-- Recent Activity and Top Classes -->
-                        <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
-
-                            <!-- Recent Activity -->
-                            <div class="rounded-xl bg-white p-5 shadow-sm">
-                                <h2 class="mb-5 text-lg font-bold text-slate-800">
-                                    Recent Activity
-                                </h2>
-
-                                <div class="space-y-5">
-                                    <div class="flex gap-3">
-                                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-                                            ST
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-sm font-semibold text-slate-800">
-                                                New student registered
-                                            </p>
-                                            <p class="text-sm text-slate-500">
-                                                Aline Uwase joined Senior 6.
-                                            </p>
-                                            <p class="mt-1 text-xs text-slate-400">10 minutes ago</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex gap-3">
-                                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">
-                                            FE
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-sm font-semibold text-slate-800">
-                                                School fees received
-                                            </p>
-                                            <p class="text-sm text-slate-500">
-                                                Patrick Habimana paid 450,000 RWF.
-                                            </p>
-                                            <p class="mt-1 text-xs text-slate-400">30 minutes ago</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex gap-3">
-                                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700">
-                                            AT
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-sm font-semibold text-slate-800">
-                                                Attendance updated
-                                            </p>
-                                            <p class="text-sm text-slate-500">
-                                                Senior 4 attendance was recorded.
-                                            </p>
-                                            <p class="mt-1 text-xs text-slate-400">1 hour ago</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Top Classes -->
-                            <div class="rounded-xl bg-white p-5 shadow-sm">
-                                <h2 class="mb-5 text-lg font-bold text-slate-800">
-                                    Class Overview
-                                </h2>
-
-                                <div class="space-y-5">
-                                    <div>
-                                        <div class="mb-2 flex justify-between text-sm">
-                                            <span class="font-medium text-slate-700">Senior 6</span>
-                                            <span class="text-slate-500">90%</span>
-                                        </div>
-                                        <div class="h-2 overflow-hidden rounded-full bg-slate-100">
-                                            <div class="h-full w-[90%] rounded-full bg-blue-600"></div>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="mb-2 flex justify-between text-sm">
-                                            <span class="font-medium text-slate-700">Senior 5</span>
-                                            <span class="text-slate-500">75%</span>
-                                        </div>
-                                        <div class="h-2 overflow-hidden rounded-full bg-slate-100">
-                                            <div class="h-full w-[75%] rounded-full bg-green-500"></div>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="mb-2 flex justify-between text-sm">
-                                            <span class="font-medium text-slate-700">Senior 4</span>
-                                            <span class="text-slate-500">65%</span>
-                                        </div>
-                                        <div class="h-2 overflow-hidden rounded-full bg-slate-100">
-                                            <div class="h-full w-[65%] rounded-full bg-amber-500"></div>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="mb-2 flex justify-between text-sm">
-                                            <span class="font-medium text-slate-700">Senior 3</span>
-                                            <span class="text-slate-500">80%</span>
-                                        </div>
-                                        <div class="h-2 overflow-hidden rounded-full bg-slate-100">
-                                            <div class="h-full w-[80%] rounded-full bg-purple-500"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
+                    <p id="search-message" class="hidden p-5 text-sm text-slate-500">No students found.</p>
+                </section>
+
+                <!-- Activity and class overview -->
+                <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
+
+                    <section id="activity" class="section-card p-5">
+                        <h2 class="mb-5 text-lg font-bold text-slate-800">Recent Activity</h2>
+
+                        <div class="space-y-5">
+                            <div class="flex gap-3">
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700">ST</div>
+                                <div>
+                                    <p class="text-sm font-semibold">New student registered</p>
+                                    <p class="text-sm text-slate-500">Aline Uwase joined Senior 6.</p>
+                                    <p class="mt-1 text-xs text-slate-400">10 minutes ago</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">FE</div>
+                                <div>
+                                    <p class="text-sm font-semibold">School fees received</p>
+                                    <p class="text-sm text-slate-500">Patrick Habimana paid 450,000 RWF.</p>
+                                    <p class="mt-1 text-xs text-slate-400">30 minutes ago</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700">AT</div>
+                                <div>
+                                    <p class="text-sm font-semibold">Attendance updated</p>
+                                    <p class="text-sm text-slate-500">Senior 4 attendance was recorded.</p>
+                                    <p class="mt-1 text-xs text-slate-400">1 hour ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="classes" class="section-card p-5">
+                        <h2 class="mb-5 text-lg font-bold text-slate-800">Class Overview</h2>
+
+                        <div class="space-y-5">
+                            <div>
+                                <div class="mb-2 flex justify-between text-sm"><span>Senior 6</span><span>90%</span></div>
+                                <div class="h-2 overflow-hidden rounded-full bg-slate-100">
+                                    <div class="h-full w-[90%] rounded-full bg-blue-600"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mb-2 flex justify-between text-sm"><span>Senior 5</span><span>75%</span></div>
+                                <div class="h-2 overflow-hidden rounded-full bg-slate-100">
+                                    <div class="h-full w-[75%] rounded-full bg-green-500"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mb-2 flex justify-between text-sm"><span>Senior 4</span><span>65%</span></div>
+                                <div class="h-2 overflow-hidden rounded-full bg-slate-100">
+                                    <div class="h-full w-[65%] rounded-full bg-amber-500"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mb-2 flex justify-between text-sm"><span>Senior 3</span><span>80%</span></div>
+                                <div class="h-2 overflow-hidden rounded-full bg-slate-100">
+                                    <div class="h-full w-[80%] rounded-full bg-purple-500"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
 
-
-                <!-- Add New Student Form -->
-                <section class="rounded-xl bg-white p-5 shadow-sm sm:p-6">
+                <!-- Add student form -->
+                <section id="add-student" class="section-card p-5 sm:p-6">
                     <div class="mb-6">
                         <h2 class="text-xl font-bold text-slate-900">Add New Student</h2>
-                        <p class="mt-1 text-sm text-slate-500">
-                            Enter the student's information below.
-                        </p>
+                        <p class="mt-1 text-sm text-slate-500">Enter the student's information below.</p>
                     </div>
 
-                    <form class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                    <form id="student-form" class="grid grid-cols-1 gap-5 md:grid-cols-2">
 
                         <div>
-                            <label for="student-name" class="mb-2 block text-sm font-medium text-slate-700">
-        Full Name
-      </label>
-                            <input id="student-name" name="student-name" type="text" placeholder="Enter full name" required class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                            <label for="student-name" class="form-label">Full Name</label>
+                            <input id="student-name" name="student-name" type="text" placeholder="Enter full name" required class="form-control">
                         </div>
 
                         <div>
-                            <label for="student-email" class="mb-2 block text-sm font-medium text-slate-700">
-        Email Address
-      </label>
-                            <input id="student-email" name="student-email" type="email" placeholder="student@example.com" required class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                            <label for="student-email" class="form-label">Email Address</label>
+                            <input id="student-email" name="student-email" type="email" placeholder="student@example.com" required class="form-control">
                         </div>
 
                         <div>
-                            <label for="student-class" class="mb-2 block text-sm font-medium text-slate-700">
-        Class
-      </label>
-                            <select id="student-class" name="student-class" required class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-        <option value="">Select class</option>
-        <option>Senior 1</option>
-        <option>Senior 2</option>
-        <option>Senior 3</option>
-        <option>Senior 4</option>
-        <option>Senior 5</option>
-        <option>Senior 6</option>
-      </select>
+                            <label for="student-class" class="form-label">Class</label>
+                            <select id="student-class" name="student-class" required class="form-control">
+                <option value="">Select class</option>
+                <option>Senior 1</option>
+                <option>Senior 2</option>
+                <option>Senior 3</option>
+                <option>Senior 4</option>
+                <option>Senior 5</option>
+                <option>Senior 6</option>
+              </select>
                         </div>
 
                         <div>
-                            <label for="student-gender" class="mb-2 block text-sm font-medium text-slate-700">
-        Gender
-      </label>
-                            <select id="student-gender" name="student-gender" required class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-        <option value="">Select gender</option>
-        <option>Female</option>
-        <option>Male</option>
-      </select>
+                            <label for="student-gender" class="form-label">Gender</label>
+                            <select id="student-gender" name="student-gender" required class="form-control">
+                <option value="">Select gender</option>
+                <option>Female</option>
+                <option>Male</option>
+              </select>
                         </div>
 
                         <div class="flex flex-wrap gap-3 pt-2 md:col-span-2">
                             <button type="submit" class="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-        Add Student
-      </button>
-
+                Add Student
+              </button>
                             <button type="reset" class="rounded-lg border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400">
-        Clear Form
-      </button>
+                Clear Form
+              </button>
                         </div>
 
                     </form>
+                    <p id="form-message" class="mt-4 hidden text-sm font-medium text-green-700" role="status"></p>
                 </section>
 
-
+                <footer class="py-3 text-center text-sm text-slate-500">
+                    © 2026 Mp Isomi School. Admin Dashboard.
+                </footer>
 
             </section>
-
-
         </main>
     </div>
 
