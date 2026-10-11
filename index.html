@@ -299,6 +299,72 @@
                 </div>
 
 
+                <!-- Add New Student Form -->
+                <section class="rounded-xl bg-white p-5 shadow-sm sm:p-6">
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold text-slate-900">Add New Student</h2>
+                        <p class="mt-1 text-sm text-slate-500">
+                            Enter the student's information below.
+                        </p>
+                    </div>
+
+                    <form class="grid grid-cols-1 gap-5 md:grid-cols-2">
+
+                        <div>
+                            <label for="student-name" class="mb-2 block text-sm font-medium text-slate-700">
+        Full Name
+      </label>
+                            <input id="student-name" name="student-name" type="text" placeholder="Enter full name" required class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                        </div>
+
+                        <div>
+                            <label for="student-email" class="mb-2 block text-sm font-medium text-slate-700">
+        Email Address
+      </label>
+                            <input id="student-email" name="student-email" type="email" placeholder="student@example.com" required class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                        </div>
+
+                        <div>
+                            <label for="student-class" class="mb-2 block text-sm font-medium text-slate-700">
+        Class
+      </label>
+                            <select id="student-class" name="student-class" required class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+        <option value="">Select class</option>
+        <option>Senior 1</option>
+        <option>Senior 2</option>
+        <option>Senior 3</option>
+        <option>Senior 4</option>
+        <option>Senior 5</option>
+        <option>Senior 6</option>
+      </select>
+                        </div>
+
+                        <div>
+                            <label for="student-gender" class="mb-2 block text-sm font-medium text-slate-700">
+        Gender
+      </label>
+                            <select id="student-gender" name="student-gender" required class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+        <option value="">Select gender</option>
+        <option>Female</option>
+        <option>Male</option>
+      </select>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 pt-2 md:col-span-2">
+                            <button type="submit" class="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        Add Student
+      </button>
+
+                            <button type="reset" class="rounded-lg border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400">
+        Clear Form
+      </button>
+                        </div>
+
+                    </form>
+                </section>
+
+
+
             </section>
 
 
