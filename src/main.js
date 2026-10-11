@@ -1,5 +1,5 @@
 import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Mp Isomi School Dashboard is ready!');
+    console.log('shop management dashboard');
 });
