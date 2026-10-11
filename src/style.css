@@ -1,31 +1,99 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @theme {
+    --font-sans: "Inter", sans-serif;
     --color-brand-50: #eff6ff;
     --color-brand-100: #dbeafe;
     --color-brand-500: #3b82f6;
     --color-brand-600: #2563eb;
     --color-brand-700: #1d4ed8;
-    --font-sans: "Inter", sans-serif;
+    --color-brand-800: #1e40af;
 }
 
 @layer components {
+    .sidebar {
+        @apply fixed inset-y-0 left-0 z-20 hidden w-64 flex-col border-r border-slate-200 bg-white;
+    }
     .nav-link {
-        @apply block rounded-lg px-4 py-3 font-medium text-slate-300 transition hover: bg-slate-800 hover: text-white;
+        @apply flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition duration-200;
     }
-    .dashboard-card {
-        @apply rounded-xl bg-white p-5 shadow-sm transition duration-200 hover: -translate-y-1 hover: shadow-md;
+    .card {
+        @apply rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-200;
     }
-    .section-card {
-        @apply overflow-hidden rounded-xl bg-white shadow-sm;
+    .btn-primary {
+        @apply inline-flex items-center justify-center rounded-xl bg-brand-600 px-4 py-3 text-sm font-bold text-white transition duration-200;
+    }
+    .btn-secondary {
+        @apply inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition duration-200;
+    }
+    .badge {
+        @apply inline-flex rounded-full px-3 py-1 text-xs font-bold;
     }
     .form-label {
-        @apply mb-2 block text-sm font-medium text-slate-700;
+        @apply mb-2 block text-sm font-semibold text-slate-700;
     }
-    .form-control {
-        @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-3 outline-none transition focus: border-blue-500 focus: ring-2 focus: ring-blue-200;
+    .form-input {
+        @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm text-slate-800 transition duration-200;
     }
-    .status-badge {
-        @apply inline-block rounded-full px-3 py-1 text-xs font-semibold;
+    .panel {
+        @apply min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm;
+    }
+    .table-row {
+        @apply border-b border-slate-100 transition duration-200;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        display: flex;
+    }
+    .main-content {
+        margin-left: 16rem;
+    }
+}
+
+.nav-link:hover {
+    background-color: var(--color-brand-50);
+    color: var(--color-brand-700);
+}
+
+.nav-link:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 3px;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-brand-700);
+    box-shadow: 0 5px 14px rgb(37 99 235 / 20%);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-slate-50);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgb(15 23 42 / 8%);
+}
+
+.table-row:hover {
+    background-color: var(--color-brand-50);
+}
+
+.form-input:focus {
+    border-color: var(--color-brand-500);
+    outline: 2px solid rgb(59 130 246 / 20%);
+    outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }
